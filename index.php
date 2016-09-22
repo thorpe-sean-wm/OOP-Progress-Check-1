@@ -3,6 +3,7 @@
 <head>
     <meta charset="UHF-8">
     <title>OOP in PHP</title>
+    <?php include("autoload_Function.php")?>
     <?php include("classes.php");?>
 </head>
 <body>
@@ -19,6 +20,7 @@ $B32Zealot = new computer('Conquerer 8A32i', 'M-87 Processor', 'GeForce GTX 9000
 echo 'Motherboard: '. $B32Zealot->get_motherboard(). '<br/>';
 echo 'CPU: '. $B32Zealot->get_cpu(). '<br/>';
 echo 'GPU: '. $B32Zealot->get_gpu();
+
 
 ?>
 </html>

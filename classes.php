@@ -1,9 +1,22 @@
 <?php
+
     Class computer {
         public $motherboard;
         public $cpu;
         public $gpu;
         private $receipt;
+
+        public $model_name;
+        public static $minModelNameLength = 10;
+
+        public static function validateModel_Name($model_name) {
+            if(strlen($model_name) >= self::$minModelNameLength) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         function __construct($motherboard,$cpu,$gpu,$receipt){
             $this->motherboard = $motherboard;
             $this->cpu = $cpu;
@@ -36,4 +49,55 @@
             }
         }
     }
+    abstract class ComputerDesign {
+
+        public $name;
+        public $color;
+
+        public function describe() {
+            return $this->name;
+        }
+
+        abstract public function makeColor();
+    }
+
+    class Excalibur extends ComputerDesign {
+
+        public function describe(){
+            return parent::describe();
+        }
+
+        public function makeColor() {
+            return 'Gold';
+        }
+    }
+
+    class Racer extends ComputerDesign {
+
+        public function describe() {
+            return parent::describe();
+        }
+
+        public function makeColor() {
+            return 'Blue';
+        }
+    }
+
+    class Titan extends ComputerDesign {
+        public function describe() {
+            return parent::describe();
+        }
+        public function makeColor() {
+            return 'Iron';
+        }
+    }
+
+    $computer = new Titan();
+    $computer->name = 'The Titan is one of the strongest cpu\'s there is currently';
+
+    echo $computer->describe(). '<br/>';
+    echo 'It glows the color  '. $computer->makeColor(). '<br/>';
+
+
+
 ?>
